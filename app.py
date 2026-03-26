@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import linear_regression_sales
-import LinearRegression
+
 
 app = Flask(__name__)
 
@@ -34,12 +34,16 @@ def supervised():
 @app.route('/LinearRegression', methods=["GET", "POST"])
 def calculateSales():
     result = None
+
+    linear_regression_sales.generate_graph()
+
+    m, b = linear_regression_sales.get_equation()
+
     if request.method == "POST":
         investment = float(request.form["investment"])
         result = linear_regression_sales.predict_sales(investment)
-    return render_template("linear_regression_app.html", result=result)
 
-
+    return render_template("linear_regression_app.html", result=result, m=m, b=b)
 
 
 if __name__ == "__main__":
