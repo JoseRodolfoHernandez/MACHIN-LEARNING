@@ -1,0 +1,40 @@
+{% extends "menu.html" %}
+
+{% block title %}Linear Regression Application{% endblock %}
+
+{% block content %}
+
+<h1>Linear Regression Application</h1>
+
+<h2>Problem Description</h2>
+<p>
+The goal is to predict future sales based on historical data using a linear regression model.
+</p>
+
+<h2>Dataset Explanation</h2>
+<p>
+The dataset contains pairs of values representing input (X) and output (Y).
+</p>
+
+<h2>Variables</h2>
+<ul>
+    <li><strong>X:</strong> Time or investment</li>
+    <li><strong>Y:</strong> Sales</li>
+</ul>
+
+<h2>Prediction Form</h2>
+
+<form method="POST" action="/LinearRegression">
+    <div class="mb-3">
+        <label class="form-label">Enter value (X):</label>
+        <input type="number" step="any" name="hours" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Predict</button>
+</form>
+
+{% if result %}
+    <h3 class="mt-4">Prediction Result:</h3>
+    <p><strong>{{ result }}</strong></p>
+{% endif %}
+
+{% endblock %}

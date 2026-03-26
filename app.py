@@ -1,26 +1,45 @@
 from flask import Flask, render_template, request
+import linear_regression_sales
 import LinearRegression
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    inicio = 'test'
-    if 5 == 5:
-        inicio = 'test2'
-    return "hello Flask " + inicio 
-
-@app.route('/FirstPage')
+@app.route('/home')
 def firstPage():
     return render_template('index.html')
 
+@app.route('/case_1_stock')
+def case1Stock():
+    return render_template('case_1_stock.html')
+
+
+@app.route('/case2')
+def case2advertising():
+    return render_template('case_2_advertising.html')
+
+@app.route('/case3')
+def case3customer():
+    return render_template('case_3_customer.html')
+
+@app.route('/case4')
+def case4inventory():
+    return render_template('case_4_inventory.html')
+
+@app.route('/supervised')
+def supervised():
+    return render_template('supervised_learning.html')
+
+
 @app.route('/LinearRegression', methods=["GET", "POST"])
-def calculateGrade():
-    calculateResult = None
+def calculateSales():
+    result = None
     if request.method == "POST":
-        hours = float(request.form["hours"])
-        calculateResult = LinearRegression.calculaterGrade(hours)
-    return render_template("linearRegressionGrades.html", result=calculateResult)
+        investment = float(request.form["investment"])
+        result = linear_regression_sales.predict_sales(investment)
+    return render_template("linear_regression_app.html", result=result)
+
+
 
 
 if __name__ == "__main__":

@@ -1,45 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{%extends "menu.html"%}
+{% block title %}Home{% endblock %}
+{% block content %}
     <h1> first page</h1>
-    <p> Machine Learning Class </p>
-    <h1>
-        Use Case: Machine Learning in Sales and Stock
-    </h1>
-
-
-<h2>Problem</h2>
-
-    <p>
-       Companies do not always know how much they will sell in the future. This can lead to overstock (excess inventory) or shortages.
-</p>
-<h2>Solution with Machine Learning</h2>
-<p>
-A machine learning model is implemented that analyzes historical sales data, dates, seasons, and customer behavior to predict how many units of a product will be sold in the next period.
-</p>
-<h2>How does it work?</h2>
-<ul>
-<li>1. Historical sales data is collected.</li>
-<li>2. A regression model is trained.</li>
-<li>3. The model learns demand patterns.</li>
-<li>4. The system automatically predicts future sales.</li>
-</ul>
-
-<h2>Benefits</h2>
-<ul>
-<li>Reduction of losses due to excess inventory.</li>
-<li>better purchasing planning.</li>
-<li>Cash flow optimization.</li>
-<li>Decisions based on data.</li>
-</ul>
-<h2>Technologies Used</h2>
-<p>
-Python, Flask y Scikit-learn.
-</p>
-</body>
-</html>
+    
+{% endblock %}

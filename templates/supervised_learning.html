@@ -1,0 +1,50 @@
+{% extends "menu.html" %}
+
+{% block title %}Supervised Learning{% endblock %}
+
+{% block content %}
+
+<h1>Supervised Learning - Linear Regression</h1>
+
+<h2>What is Supervised Learning?</h2>
+<p>
+    Supervised learning is a Machine Learning technique where the model learns from labeled data.
+    It uses input-output pairs to identify patterns and make predictions.
+</p>
+
+<h2>What is Linear Regression?</h2>
+<p>
+    Linear regression is a supervised learning algorithm used to predict continuous values.
+    It models the relationship between an independent variable and a dependent variable using a straight line.
+</p>
+
+<h2>Independent and Dependent Variables</h2>
+<ul>
+    <li><strong>Independent Variable (X):</strong> Input data (e.g., study hours).</li>
+    <li><strong>Dependent Variable (Y):</strong> Output to predict (e.g., grades).</li>
+</ul>
+
+<h2>Training Data</h2>
+<p>
+    Training data consists of historical data used to teach the model the relationship between variables.
+</p>
+
+<h2>Regression Line</h2>
+<p>
+    The regression line is the best-fit line that represents the relationship between X and Y.
+</p>
+
+<h2>Formula</h2>
+<p><strong>Y = mX + b</strong></p>
+
+<ul>
+    <li><strong>m (Slope):</strong> Rate of change.</li>
+    <li><strong>b (Intercept):</strong> Value when X = 0.</li>
+</ul>
+
+<h2>Application Example</h2>
+<p>
+    Linear regression can be used to predict sales based on advertising investment or time.
+</p>
+
+{% endblock %}
