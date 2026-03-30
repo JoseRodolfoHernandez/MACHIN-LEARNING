@@ -12,6 +12,7 @@
 
 <body>
 
+    <!-- NAVBAR -->
     <header>
         <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
             <div class="container-fluid">
@@ -24,90 +25,61 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+                        <!-- HOME -->
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
 
+                        <!-- USE CASES -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 ML Use Cases
                             </a>
-
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/case_1_stock">
-                                        Case 1: Sales & Stock
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/case2">
-                                        Case 2: Advertising
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/case3">
-                                        Case 3: Customer Prediction
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/case4">
-                                        Case 4: Inventory
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item" href="/case_1_stock">Case 1</a></li>
+                                <li><a class="dropdown-item" href="/case2">Case 2</a></li>
+                                <li><a class="dropdown-item" href="/case3">Case 3</a></li>
+                                <li><a class="dropdown-item" href="/case4">Case 4</a></li>
                             </ul>
                         </li>
 
-                        <!-- SUPERVISED LEARNING -->
+                        <!-- SUPERVISED -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/supervised">
-                                Supervised Learning
-                            </a>
+                            <a class="nav-link" href="/supervised">Supervised Learning</a>
                         </li>
 
-                        <!-- LINEAR REGRESSION -->
+                        <!-- LINEAR -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 Linear Regression
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/linear_theory">
-                                        Concepts
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/LinearRegression">
-                                        Application
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item" href="/linear_theory">Concepts</a></li>
+                                <li><a class="dropdown-item" href="/LinearRegression">Application</a></li>
                             </ul>
                         </li>
 
-                        <!-- LOGISTIC REGRESSION -->
+                        <!-- LOGISTIC -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 Logistic Regression
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/logistic_theory">
-                                        Concepts
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/logistic">
-                                        Application
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item" href="/logistic_theory">Concepts</a></li>
+                                <li><a class="dropdown-item" href="/logistic">Application</a></li>
                             </ul>
                         </li>
 
-                        <a class="dropdown-item" href="/logistic">
-                            Logistic Regression
-                        </a>
+                        <!-- CLASSIFICATION -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Classification Model
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/classification_theory">Concepts</a></li>
+                                <li><a class="dropdown-item" href="/classification_app">Application</a></li>
+                            </ul>
                         </li>
-                    </ul>
-                    </li>
 
                     </ul>
 
@@ -119,11 +91,13 @@
         </nav>
     </header>
 
+    <!-- CONTENT -->
     <div class="container mt-4">
         {% block content %}
         {% endblock %}
     </div>
 
+    <!-- FOOTER -->
     <footer class="mt-5">
         <p class="text-center">© 2026 Machine Learning App - José Hernández</p>
     </footer>

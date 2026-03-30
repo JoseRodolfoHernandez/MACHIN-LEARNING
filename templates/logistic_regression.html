@@ -35,6 +35,10 @@
 <p>
     A customer who visits frequently and has high income has a higher probability of buying.
 </p>
+
+<hr>
+
+<!-- FORM -->
 <h2 class="mt-4">Prediction Form</h2>
 
 <form method="POST" action="/logistic">
@@ -60,10 +64,15 @@
     <button class="btn btn-success">Predict</button>
 </form>
 
+<!-- RESULT -->
 {% if result %}
-<div class="alert alert-info mt-4">
+<div class="alert alert-info mt-4 text-center">
     <strong>{{ result }}</strong>
 </div>
+{% endif %}
+
+<hr>
+
 <h2>Data Preparation</h2>
 <p>
     The dataset was cleaned and split into training and testing sets using train_test_split.
@@ -74,37 +83,28 @@
     A Logistic Regression model was trained using sklearn.
 </p>
 
-<h2>Prediction Form</h2>
-
-<form method="POST" action="/logistic">
-    <input type="number" name="edad" placeholder="Age" required>
-    <input type="number" name="ingreso" placeholder="Income" required>
-    <input type="number" name="visitas" placeholder="Visits" required>
-    <input type="number" name="tiempo" placeholder="Time" required>
-    <input type="number" name="compras" placeholder="Purchases" required>
-    <input type="number" name="descuento" placeholder="Discount" required>
-    <button type="submit">Predict</button>
-</form>
-
-{% if result %}
-<h3>Result:</h3>
-<p>{{ result }}</p>
-{% endif %}
-
-<h2>Model Metrics</h2>
+<!-- METRICS -->
+{% if accuracy %}
+<h2 class="mt-4">Model Metrics</h2>
 <ul>
-    <li>Accuracy</li>
-    <li>Precision</li>
-    <li>Recall</li>
-    <li>F1 Score</li>
+    <li><strong>Accuracy:</strong> {{ accuracy }}</li>
+    <li><strong>Precision:</strong> {{ precision }}</li>
+    <li><strong>Recall:</strong> {{ recall }}</li>
+    <li><strong>F1 Score:</strong> {{ f1 }}</li>
 </ul>
 
 <h2>Confusion Matrix</h2>
-<img src="{{ url_for('static', filename='confusion_matrix.png') }}">
+<img src="{{ url_for('static', filename='confusion_matrix.png') }}" class="img-fluid">
 
 <h2>ROC Curve</h2>
-<img src="{{ url_for('static', filename='roc_curve.png') }}">
+<img src="{{ url_for('static', filename='roc_curve.png') }}" class="img-fluid">
 
+<h2>Interpretation</h2>
+<p>
+    The model shows good performance in predicting customer behavior.
+    High accuracy indicates reliable predictions, while precision and recall
+    show how well the model distinguishes between classes.
+</p>
 {% endif %}
 
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "menu.html" %}
 
-{% block title %}Logistic Regression Concepts{% endblock %}
+{% block title %}Logistic Regression - Concepts{% endblock %}
 
 {% block content %}
 
@@ -8,43 +8,50 @@
 
 <h2>What is Logistic Regression?</h2>
 <p>
-    Logistic regression is a supervised machine learning algorithm used for classification problems.
-    It predicts probabilities instead of continuous values.
+Logistic regression is a supervised machine learning algorithm used for classification problems.
+It predicts the probability that an instance belongs to a specific class.
 </p>
 
-<h2>Regression vs Classification</h2>
+<h2>Difference Between Regression and Classification</h2>
 <p>
-    Linear regression predicts numeric values, while logistic regression predicts categories.
+Linear regression predicts continuous values, while logistic regression predicts discrete categories
+(such as Yes/No or 0/1).
 </p>
 
 <h2>Binary Classification</h2>
 <p>
-    It classifies data into two classes (0 or 1).
+Logistic regression is commonly used for binary classification, where the output has only two possible values.
 </p>
 
-<h2>Target Variable</h2>
+<h2>Target Variable / Class Label</h2>
 <p>
-    The output variable is categorical (e.g., Buy or Not Buy).
+The target variable represents the output we want to predict (e.g., purchase = 1 or no purchase = 0).
 </p>
 
-<h2>Features</h2>
+<h2>Features / Predictors</h2>
 <p>
-    Input variables such as age, income, visits, etc.
+These are the input variables used to make predictions, such as age, income, or number of visits.
 </p>
 
 <h2>Probability Estimation</h2>
 <p>
-    Uses a sigmoid function to produce values between 0 and 1.
+Logistic regression uses a sigmoid function to estimate probabilities between 0 and 1.
 </p>
 
 <h2>Decision Boundary</h2>
 <p>
-    A threshold (usually 0.5) determines the class.
+The decision boundary separates the classes based on probability.
 </p>
 
-<h2>Real Example</h2>
+<h2>Classification Threshold</h2>
 <p>
-    Predicting if a customer will purchase a product based on behavior.
+A threshold (commonly 0.5) is used to decide the final class:
+if probability ≥ 0.5 → class 1, otherwise → class 0.
+</p>
+
+<h2>Real-World Example</h2>
+<p>
+Predicting whether a customer will buy a product based on their behavior and demographics.
 </p>
 
 {% endblock %}
