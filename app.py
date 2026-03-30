@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import linear_regression_sales
-
+from jobs import logistic_regression  # 👈 IMPORTANTE
 
 app = Flask(__name__)
 
@@ -12,7 +12,6 @@ def firstPage():
 @app.route('/case_1_stock')
 def case1Stock():
     return render_template('case_1_stock.html')
-
 
 @app.route('/case2')
 def case2advertising():
@@ -30,21 +29,45 @@ def case4inventory():
 def supervised():
     return render_template('supervised_learning.html')
 
+# ------------------ LINEAR REGRESSION ------------------
 
 @app.route('/LinearRegression', methods=["GET", "POST"])
 def calculateSales():
     result = None
-
-    linear_regression_sales.generate_graph()
-
-    m, b = linear_regression_sales.get_equation()
-
     if request.method == "POST":
         investment = float(request.form["investment"])
         result = linear_regression_sales.predict_sales(investment)
+    return render_template("linear_regression_app.html", result=result)
 
-    return render_template("linear_regression_app.html", result=result, m=m, b=b)
+@app.route("/linear_theory")
+def linear_theory():
+    return render_template("linear_theory.html")
 
+# ------------------ LOGISTIC REGRESSION ------------------
+
+@app.route("/logistic", methods=["GET", "POST"])
+def logistic():
+
+    result = None
+
+    if request.method == "POST":
+        edad = float(request.form["edad"])
+        ingreso = float(request.form["ingreso"])
+        visitas = float(request.form["visitas"])
+        tiempo = float(request.form["tiempo"])
+        compras = float(request.form["compras"])
+        descuento = float(request.form["descuento"])
+
+        data = [edad, ingreso, visitas, tiempo, compras, descuento]
+
+        prediction = logistic_regression.predict_customer(data)
+
+        if prediction == 1:
+            result = "Customer WILL BUY"
+        else:
+            result = "Customer WILL NOT BUY"
+
+    return render_template("logistic_regression.html", result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)
