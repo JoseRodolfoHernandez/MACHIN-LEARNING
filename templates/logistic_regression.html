@@ -1,0 +1,39 @@
+{% extends "menu.html" %}
+
+{% block title %}Logistic Regression{% endblock %}
+
+{% block content %}
+
+<h1>Logistic Regression - Marketing Analytics</h1>
+
+<h2>Problem Description</h2>
+<p>
+    The objective is to predict whether a customer will purchase a product based on their behavior.
+</p>
+
+<h2>Type of Machine Learning</h2>
+<p>Supervised Learning - Classification</p>
+
+<h2>Dataset</h2>
+<p>
+    The dataset includes features such as age, income, website visits, time spent on site,
+    previous purchases, and discounts used.
+</p>
+
+<h2>Variables</h2>
+<ul>
+    <li><strong>Inputs:</strong> Age, Income, Visits, Time, Purchases, Discount</li>
+    <li><strong>Output:</strong> Purchase (0 = No, 1 = Yes)</li>
+</ul>
+
+<h2>Model Explanation</h2>
+<p>
+    Logistic regression predicts the probability of a binary outcome using a sigmoid function.
+</p>
+
+<h2>Example</h2>
+<p>
+    A customer who visits frequently and has high income has a higher probability of buying.
+</p>
+
+{% endblock %}

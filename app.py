@@ -39,7 +39,13 @@ def calculateSales():
         result = linear_regression_sales.predict_sales(investment)
     return render_template("linear_regression_app.html", result=result)
 
+@app.route("/linear_theory")
+def linear_theory():
+    return render_template("linear_theory.html")
 
+@app.route("/logistic")
+def logistic():
+    return render_template("logistic_regression.html")
 
 
 if __name__ == "__main__":
