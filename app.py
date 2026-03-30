@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import linear_regression_sales
 import LinearRegression
+import logistic_regression
 
 app = Flask(__name__)
 
@@ -43,9 +44,34 @@ def calculateSales():
 def linear_theory():
     return render_template("linear_theory.html")
 
-@app.route("/logistic")
+
+@app.route("/logistic", methods=["GET", "POST"])
 def logistic():
-    return render_template("logistic_regression.html")
+
+    result = None
+
+    if request.method == "POST":
+        edad = float(request.form["edad"])
+        ingreso = float(request.form["ingreso"])
+        visitas = float(request.form["visitas"])
+        tiempo = float(request.form["tiempo"])
+        compras = float(request.form["compras"])
+        descuento = float(request.form["descuento"])
+
+        data = [edad, ingreso, visitas, tiempo, compras, descuento]
+
+        prediction = logistic_regression.predict_customer(data)
+
+        if prediction == 1:
+            result = "Customer WILL BUY"
+        else:
+            result = "Customer WILL NOT BUY"
+
+    return render_template("logistic_regression.html", result=result)
+
+@app.route("/logistic_theory")
+def logistic_theory():
+    return render_template("logistic_theory.html")
 
 
 if __name__ == "__main__":
