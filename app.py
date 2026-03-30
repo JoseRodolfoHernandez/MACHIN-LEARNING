@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import linear_regression_sales
-import LinearRegression
-import logistic_regression
+from jobs import logistic_regression  # 👈 IMPORTANTE
 
 app = Flask(__name__)
 
@@ -13,7 +12,6 @@ def firstPage():
 @app.route('/case_1_stock')
 def case1Stock():
     return render_template('case_1_stock.html')
-
 
 @app.route('/case2')
 def case2advertising():
@@ -31,6 +29,7 @@ def case4inventory():
 def supervised():
     return render_template('supervised_learning.html')
 
+# ------------------ LINEAR REGRESSION ------------------
 
 @app.route('/LinearRegression', methods=["GET", "POST"])
 def calculateSales():
@@ -44,6 +43,7 @@ def calculateSales():
 def linear_theory():
     return render_template("linear_theory.html")
 
+# ------------------ LOGISTIC REGRESSION ------------------
 
 @app.route("/logistic", methods=["GET", "POST"])
 def logistic():
@@ -68,11 +68,6 @@ def logistic():
             result = "Customer WILL NOT BUY"
 
     return render_template("logistic_regression.html", result=result)
-
-@app.route("/logistic_theory")
-def logistic_theory():
-    return render_template("logistic_theory.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)

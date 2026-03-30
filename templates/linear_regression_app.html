@@ -4,21 +4,21 @@
 
 {% block content %}
 
-<h1>Linear Regression Application</h1>
+<h1>Sales Prediction using Linear Regression</h1>
 
 <h2>Problem Description</h2>
 <p>
-The goal is to predict future sales based on historical data using a linear regression model.
+The goal is to predict future sales based on marketing investment using a linear regression model.
 </p>
 
 <h2>Dataset Explanation</h2>
 <p>
-The dataset contains pairs of values representing input (X) and output (Y).
+This dataset is based on real advertising data, where the relationship between investment and sales is analyzed.
 </p>
 
 <h2>Variables</h2>
 <ul>
-    <li><strong>X:</strong> Time or investment</li>
+    <li><strong>X:</strong> Investment</li>
     <li><strong>Y:</strong> Sales</li>
 </ul>
 
@@ -26,15 +26,30 @@ The dataset contains pairs of values representing input (X) and output (Y).
 
 <form method="POST" action="/LinearRegression">
     <div class="mb-3">
-        <label class="form-label">Enter value (X):</label>
-        <input type="number" step="any" name="hours" class="form-control" required>
+        <label class="form-label">Enter Investment ($):</label>
+        <input type="number" step="any" name="investment" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-primary">Predict</button>
+    <button type="submit" class="btn btn-primary">Predict Sales</button>
 </form>
 
 {% if result %}
-    <h3 class="mt-4">Prediction Result:</h3>
-    <p><strong>{{ result }}</strong></p>
+<div class="card mt-4 shadow">
+    <div class="card-body text-center">
+        <h4>Prediction Result</h4>
+        <h2 class="text-success">${{ result }}</h2>
+    </div>
+</div>
 {% endif %}
+
+<h2 class="mt-4">Regression Graph</h2>
+<img src="{{ url_for('static', filename='regression.png') }}" class="img-fluid">
+
+<h2 class="mt-4">Model Equation</h2>
+<p><strong>Sales = {{ m }} * Investment + {{ b }}</strong></p>
+
+<h2 class="mt-4">Results Interpretation</h2>
+<p>
+The regression model shows a positive relationship, meaning that as investment increases, sales also increase.
+</p>
 
 {% endblock %}
