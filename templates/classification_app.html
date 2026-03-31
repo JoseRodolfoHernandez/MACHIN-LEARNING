@@ -1,64 +1,35 @@
-{% extends "menu.html" %}
+<h2 class="mt-4">Prediction Form</h2>
 
-{% block title %}Classification Model - Application{% endblock %}
+<form method="POST" action="/classification_app">
+    <div class="mb-3">
+        <label>Age</label>
+        <input type="number" name="edad" class="form-control" required>
+    </div>
 
-{% block content %}
+    <div class="mb-3">
+        <label>Estimated Salary</label>
+        <input type="number" name="salario" class="form-control" required>
+    </div>
 
-<h1>Classification Model - Application</h1>
-
-<h2>Problem Description</h2>
-<p>
-The objective is to classify whether a customer will purchase a product based on their characteristics.
-</p>
-
-<h2>Dataset Explanation</h2>
-<p>
-The dataset includes customer information such as age, income, website visits,
-time spent on site, previous purchases, and discount usage.
-</p>
-
-<h2>Input Variables</h2>
+    <button class="btn btn-success">Predict</button>
+</form>
+{% if result %}
+<div class="alert alert-info mt-4 text-center">
+    <strong>{{ result }}</strong>
+</div>
+{% endif %}
+{% if accuracy %}
+<h2 class="mt-4">Model Metrics</h2>
 <ul>
-    <li>Age</li>
-    <li>Income</li>
-    <li>Website Visits</li>
-    <li>Time on Site</li>
-    <li>Previous Purchases</li>
-    <li>Discount Used</li>
+    <li><strong>Accuracy:</strong> {{ accuracy }}</li>
+    <li><strong>Precision:</strong> {{ precision }}</li>
+    <li><strong>Recall:</strong> {{ recall }}</li>
+    <li><strong>F1 Score:</strong> {{ f1 }}</li>
 </ul>
 
-<h2>Target Variable</h2>
-<p>
-Purchase decision (0 = No, 1 = Yes)
-</p>
+<h2>Confusion Matrix</h2>
+<img src="{{ url_for('static', filename='rf_confusion_matrix.png') }}" class="img-fluid">
 
-<h2>Data Preparation</h2>
-<p>
-The dataset is cleaned, and data is split into training and testing sets.
-</p>
-
-<h2>Model Training</h2>
-<p>
-A logistic regression model is trained using historical data.
-</p>
-
-<h2>Prediction Results</h2>
-<p>
-The model predicts whether a customer will buy or not based on input values.
-</p>
-
-<h2>Evaluation Metrics</h2>
-<ul>
-    <li>Accuracy</li>
-    <li>Precision</li>
-    <li>Recall</li>
-    <li>F1 Score</li>
-</ul>
-
-<h2>Interpretation</h2>
-<p>
-The model shows how customer behavior influences purchasing decisions.
-Higher engagement leads to a higher probability of buying.
-</p>
-
-{% endblock %}
+<h2>ROC Curve</h2>
+<img src="{{ url_for('static', filename='rf_roc_curve.png') }}" class="img-fluid">
+{% endif %}

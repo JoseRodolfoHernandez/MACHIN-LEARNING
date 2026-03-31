@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import linear_regression_sales
-from jobs import logistic_regression  # 👈 correcto
+from jobs import logistic_regression
+from jobs import classification_model
 
 app = Flask(__name__)
 
@@ -44,13 +45,10 @@ def supervised():
 # =========================
 # LINEAR REGRESSION
 # =========================
-
-# Concepts
 @app.route("/linear_theory")
 def linear_theory():
     return render_template("linear_theory.html")
 
-# Application
 @app.route('/LinearRegression', methods=["GET", "POST"])
 def calculateSales():
     result = None
@@ -68,13 +66,10 @@ def calculateSales():
 # =========================
 # LOGISTIC REGRESSION
 # =========================
-
-# Concepts
 @app.route("/logistic_theory")
 def logistic_theory():
     return render_template("logistic_theory.html")
 
-# Application
 @app.route("/logistic", methods=["GET", "POST"])
 def logistic():
 
@@ -99,7 +94,6 @@ def logistic():
             else:
                 result = "Customer WILL NOT BUY"
 
-            # Obtener métricas
             accuracy, precision, recall, f1 = logistic_regression.get_metrics()
 
         except:
@@ -114,19 +108,47 @@ def logistic():
         f1=f1
     )
 
-# =========================
-# CLASSIFICATION MODEL (ASSIGNED)
-# =========================
 
-# Concepts
+# =========================
+# CLASSIFICATION MODEL (FINAL)
+# =========================
 @app.route("/classification_theory")
 def classification_theory():
     return render_template("classification_theory.html")
 
-# Application
-@app.route("/classification_app")
+@app.route("/classification_app", methods=["GET", "POST"])
 def classification_app():
-    return render_template("classification_app.html")
+
+    result = None
+    accuracy = precision = recall = f1 = None
+
+    if request.method == "POST":
+        try:
+            edad = float(request.form["edad"])
+            salario = float(request.form["salario"])
+
+            data = [edad, salario]
+
+            prediction = classification_model.predict_customer(data)
+
+            if prediction == 1:
+                result = "Customer WILL BUY"
+            else:
+                result = "Customer WILL NOT BUY"
+
+            accuracy, precision, recall, f1 = classification_model.get_metrics()
+
+        except:
+            result = "Invalid input"
+
+    return render_template(
+        "classification_app.html",
+        result=result,
+        accuracy=accuracy,
+        precision=precision,
+        recall=recall,
+        f1=f1
+    )
 
 
 # =========================
@@ -134,3 +156,4 @@ def classification_app():
 # =========================
 if __name__ == "__main__":
     app.run(debug=True)
+
