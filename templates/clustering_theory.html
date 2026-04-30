@@ -1,0 +1,166 @@
+{% extends "menu.html" %}
+
+{% block title %}Unsupervised Learning - K-Means{% endblock %}
+
+{% block content %}
+
+<h1>Unsupervised Learning - K-Means Clustering</h1>
+
+<hr>
+
+<h2>What is Unsupervised Learning?</h2>
+<p>
+Unsupervised learning is a type of machine learning where the model analyzes and identifies patterns in data without labeled outputs. 
+Unlike supervised learning, there is no target variable, and the algorithm must discover hidden structures within the dataset.
+</p>
+
+<p>
+This approach is commonly used for tasks such as clustering, anomaly detection, and data compression.
+</p>
+
+<hr>
+
+<h2>What is Clustering?</h2>
+<p>
+Clustering is a technique used to group similar data points together based on their characteristics. 
+The goal is to ensure that data points in the same group (cluster) are more similar to each other than to those in other clusters.
+</p>
+
+<p>
+Clustering is widely used in:
+</p>
+<ul>
+    <li>Customer segmentation</li>
+    <li>Market analysis</li>
+    <li>Recommendation systems</li>
+    <li>Fraud detection</li>
+</ul>
+
+<hr>
+
+<h2>What is K-Means?</h2>
+<p>
+K-Means is one of the most popular clustering algorithms. It divides a dataset into <strong>K clusters</strong> based on similarity.
+Each cluster is represented by a centroid, which is the average position of all the points in that cluster.
+</p>
+
+<p>
+The algorithm works iteratively to improve cluster assignments and minimize variance within each cluster.
+</p>
+
+<hr>
+
+<h2>How K-Means Works (Step-by-Step)</h2>
+<ol>
+    <li>Select the number of clusters (K)</li>
+    <li>Initialize K centroids randomly</li>
+    <li>Calculate the distance between each data point and each centroid</li>
+    <li>Assign each point to the nearest centroid</li>
+    <li>Recalculate centroids as the mean of assigned points</li>
+    <li>Repeat the process until convergence</li>
+</ol>
+
+<p>
+Convergence occurs when the centroids stop changing significantly between iterations.
+</p>
+
+<hr>
+
+<h2>Centroids</h2>
+<p>
+A centroid is the central point of a cluster. It is calculated as the average of all the data points assigned to that cluster.
+Centroids are updated in each iteration of the K-Means algorithm.
+</p>
+
+<hr>
+
+<h2>Distance Metric (Euclidean Distance)</h2>
+<p>
+K-Means uses Euclidean distance to measure similarity between data points and centroids.
+</p>
+
+<p><strong>Formula:</strong></p>
+<p>
+d = √((x₁ - x₂)² + (y₁ - y₂)²)
+</p>
+
+<p>
+The smaller the distance, the more similar the data points are.
+</p>
+
+<hr>
+
+<h2>Iterative Process</h2>
+<p>
+K-Means is an iterative algorithm, meaning it repeats the process of assigning clusters and updating centroids until the results stabilize.
+</p>
+
+<p>
+Each iteration improves the grouping of data points.
+</p>
+
+<hr>
+
+<h2>Variance and Convergence</h2>
+<p>
+Variance measures how spread out the data points are within a cluster. K-Means aims to minimize this variance.
+</p>
+
+<p>
+As iterations progress:
+</p>
+<ul>
+    <li>Variance decreases</li>
+    <li>Clusters become more compact</li>
+    <li>The algorithm converges</li>
+</ul>
+
+<p>
+This behavior ensures that the final clusters represent well-defined groups.
+</p>
+
+<hr>
+
+<h2>Advantages of K-Means</h2>
+<ul>
+    <li>Simple and easy to implement</li>
+    <li>Efficient for large datasets</li>
+    <li>Works well with numerical data</li>
+</ul>
+
+<hr>
+
+<h2>Limitations of K-Means</h2>
+<ul>
+    <li>Requires choosing K in advance</li>
+    <li>Sensitive to initial centroid selection</li>
+    <li>Does not work well with non-spherical clusters</li>
+</ul>
+
+<hr>
+
+<h2>Real-World Example</h2>
+<p>
+A common use of K-Means is customer segmentation. 
+For example, customers can be grouped based on age and income to identify different market segments:
+</p>
+
+<ul>
+    <li>Low-income customers</li>
+    <li>Middle-income customers</li>
+    <li>High-income customers</li>
+</ul>
+
+<p>
+This helps businesses create targeted marketing strategies.
+</p>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>
+K-Means is a powerful and widely used clustering algorithm that helps uncover patterns in data. 
+By iteratively minimizing variance and updating centroids, it creates meaningful groups that can be used for decision-making and analysis.
+</p>
+
+{% endblock %}

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import linear_regression_sales
 from jobs import logistic_regression
 from jobs import classification_model
-import clustering
+from jobs import clustering
 
 app = Flask(__name__)
 
@@ -151,12 +151,19 @@ def classification_app():
         f1=f1
     )
 
+##@app.route("/clustering")
+##def clustering():
+##    info = clustering.ApplyClusteringKMeans()
+ ##   return str(info["results"])
+
+@app.route("/clustering_theory")
+def clustering_theory():
+    return render_template("clustering_theory.html")
+
 @app.route("/clustering")
-def clustering():
-    info = clustering.ApplyClusteringKMeans()
-    return str(info["results"])
-
-
+def clustering_view():
+    data, summary = clustering.apply_kmeans()
+    return render_template("clustering.html", data=data, summary=summary)
 
 
 # =========================
