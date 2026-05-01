@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import linear_regression_sales
 from jobs import logistic_regression
 from jobs import classification_model
+from jobs import clustering
 
 app = Flask(__name__)
 
@@ -51,14 +52,11 @@ def linear_theory():
 
 @app.route('/LinearRegression', methods=["GET", "POST"])
 def calculateSales():
+
     result = None
 
     if request.method == "POST":
-        try:
-            investment = float(request.form["investment"])
-            result = linear_regression_sales.predict_sales(investment)
-        except:
-            result = "Invalid input"
+        result = linear_regression_sales.handle_request(request.form)
 
     return render_template("linear_regression_app.html", result=result)
 
@@ -73,31 +71,10 @@ def logistic_theory():
 @app.route("/logistic", methods=["GET", "POST"])
 def logistic():
 
-    result = None
-    accuracy = precision = recall = f1 = None
+    result = accuracy = precision = recall = f1 = None
 
     if request.method == "POST":
-        try:
-            edad = float(request.form["edad"])
-            ingreso = float(request.form["ingreso"])
-            visitas = float(request.form["visitas"])
-            tiempo = float(request.form["tiempo"])
-            compras = float(request.form["compras"])
-            descuento = float(request.form["descuento"])
-
-            data = [edad, ingreso, visitas, tiempo, compras, descuento]
-
-            prediction = logistic_regression.predict_customer(data)
-
-            if prediction == 1:
-                result = "Customer WILL BUY"
-            else:
-                result = "Customer WILL NOT BUY"
-
-            accuracy, precision, recall, f1 = logistic_regression.get_metrics()
-
-        except:
-            result = "Invalid input"
+        result, accuracy, precision, recall, f1 = logistic_regression.handle_request(request.form)
 
     return render_template(
         "logistic_regression.html",
@@ -110,7 +87,7 @@ def logistic():
 
 
 # =========================
-# CLASSIFICATION MODEL (FINAL)
+# CLASSIFICATION MODEL
 # =========================
 @app.route("/classification_theory")
 def classification_theory():
@@ -119,27 +96,10 @@ def classification_theory():
 @app.route("/classification_app", methods=["GET", "POST"])
 def classification_app():
 
-    result = None
-    accuracy = precision = recall = f1 = None
+    result = accuracy = precision = recall = f1 = None
 
     if request.method == "POST":
-        try:
-            edad = float(request.form["edad"])
-            salario = float(request.form["salario"])
-
-            data = [edad, salario]
-
-            prediction = classification_model.predict_customer(data)
-
-            if prediction == 1:
-                result = "Customer WILL BUY"
-            else:
-                result = "Customer WILL NOT BUY"
-
-            accuracy, precision, recall, f1 = classification_model.get_metrics()
-
-        except:
-            result = "Invalid input"
+        result, accuracy, precision, recall, f1 = classification_model.handle_request(request.form)
 
     return render_template(
         "classification_app.html",
@@ -152,8 +112,20 @@ def classification_app():
 
 
 # =========================
+# UNSUPERVISED LEARNING
+# =========================
+@app.route("/clustering_theory")
+def clustering_theory():
+    return render_template("clustering_theory.html")
+
+@app.route("/clustering")
+def clustering_view():
+    data, summary = clustering.apply_kmeans()
+    return render_template("clustering.html", data=data, summary=summary)
+
+
+# =========================
 # MAIN
 # =========================
 if __name__ == "__main__":
     app.run(debug=True)
-

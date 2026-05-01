@@ -5,9 +5,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-def train_model():
-    data = pd.read_csv("advertising.csv")
+# =========================
+# DATASET
+# =========================
+data = pd.read_csv("advertising.csv")
 
+# =========================
+# TRAIN MODEL 
+# =========================
+def train_model():
     X = data[["TV"]]  
     Y = data["Sales"]
 
@@ -16,23 +22,27 @@ def train_model():
 
     return model, X, Y
 
+model, X, Y = train_model()
+
+# =========================
+# EQUATION
+# =========================
 def get_equation():
-    model, _, _ = train_model()
     m = model.coef_[0]
     b = model.intercept_
-
     return round(m, 2), round(b, 2)
 
-
+# =========================
+# PREDICTION
+# =========================
 def predict_sales(investment):
-    model, _, _ = train_model()
-    prediction = model.predict([[investment]])[0]
+    prediction = model.predict(np.array([[investment]]))[0]
     return round(prediction, 2)
 
-
+# =========================
+# GRAPH
+# =========================
 def generate_graph():
-    model, X, Y = train_model()
-
     plt.scatter(X, Y)
     plt.plot(X, model.predict(X))
     plt.grid()
@@ -42,3 +52,15 @@ def generate_graph():
 
     plt.savefig("static/regression.png")
     plt.close()
+
+# =========================
+# HANDLE REQUEST 
+# =========================
+def handle_request(form):
+    try:
+        investment = float(form["investment"])
+        prediction = predict_sales(investment)
+        generate_graph()
+        return prediction
+    except:
+        return "Invalid input"
