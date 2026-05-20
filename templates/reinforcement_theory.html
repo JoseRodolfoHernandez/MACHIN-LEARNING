@@ -1,0 +1,265 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">Reinforcement Learning – Basic Concepts</h1>
+
+    <p>
+        Reinforcement Learning is one of the most important branches of Artificial Intelligence and Machine Learning.
+        It focuses on the development of intelligent agents capable of learning through interaction with an environment.
+        Unlike supervised learning, where the model learns from labeled data, reinforcement learning learns by trial
+        and error using rewards and punishments.
+    </p>
+
+    <p>
+        The main objective of reinforcement learning is to allow an agent to discover the best sequence of decisions
+        that maximizes long-term rewards. The agent continuously explores the environment, evaluates the consequences
+        of its actions, and improves its behavior over time.
+    </p>
+
+    <hr>
+
+    <h2>What is Reinforcement Learning?</h2>
+
+    <p>
+        Reinforcement Learning (RL) is a machine learning technique in which an intelligent system learns how to make
+        decisions autonomously. The learning process occurs through interaction between an agent and an environment.
+        The agent performs actions, receives rewards, observes consequences, and gradually learns the optimal strategy.
+    </p>
+
+    <p>
+        RL is inspired by behavioral psychology, where learning occurs through rewards and punishments. Positive rewards
+        reinforce beneficial actions, while negative rewards discourage incorrect decisions.
+    </p>
+
+    <hr>
+
+    <h2>Intelligent Agents</h2>
+
+    <p>
+        An intelligent agent is the entity responsible for making decisions within the environment. The agent analyzes
+        the current state of the environment and chooses the most appropriate action according to its learning policy.
+    </p>
+
+    <p>
+        Intelligent agents are capable of adapting their behavior dynamically. As the training process progresses,
+        the agent improves its decision-making capabilities and becomes more efficient at achieving objectives.
+    </p>
+
+    <h4>Examples of Intelligent Agents</h4>
+
+    <ul>
+        <li>Autonomous vehicles</li>
+        <li>Video game AI systems</li>
+        <li>Delivery route optimization systems</li>
+        <li>Robotic navigation systems</li>
+        <li>Recommendation systems</li>
+        <li>Smart traffic management systems</li>
+    </ul>
+
+    <hr>
+
+    <h2>Environment</h2>
+
+    <p>
+        The environment represents the world in which the intelligent agent operates. It contains all states,
+        possible actions, and reward conditions.
+    </p>
+
+    <p>
+        Every action performed by the agent changes the environment and generates feedback. This feedback allows the
+        agent to evaluate whether its decisions are beneficial or harmful.
+    </p>
+
+    <hr>
+
+    <h2>States</h2>
+
+    <p>
+        A state represents the current situation of the environment at a specific moment. The state contains all the
+        information necessary for the agent to decide what action should be executed next.
+    </p>
+
+    <p>
+        For example, in a maze navigation problem, each position inside the maze can represent a state.
+    </p>
+
+    <hr>
+
+    <h2>Actions</h2>
+
+    <p>
+        Actions are the possible decisions that the agent can execute in each state. The available actions depend on
+        the environment configuration.
+    </p>
+
+    <p>
+        In this project, the intelligent agent can move:
+    </p>
+
+    <ul>
+        <li>Up</li>
+        <li>Down</li>
+        <li>Left</li>
+        <li>Right</li>
+    </ul>
+
+    <hr>
+
+    <h2>Rewards</h2>
+
+    <p>
+        Rewards are numerical values received by the agent after performing an action. Rewards indicate whether the
+        selected action was good or bad.
+    </p>
+
+    <p>
+        Positive rewards encourage correct decisions, while negative rewards penalize undesirable actions.
+    </p>
+
+    <p>
+        In this application:
+    </p>
+
+    <ul>
+        <li>The agent receives a positive reward when reaching the goal.</li>
+        <li>The agent receives a negative reward for incorrect or inefficient movements.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Policies</h2>
+
+    <p>
+        A policy is the strategy used by the agent to decide which action should be selected in each state.
+        The policy evolves during training as the agent gains experience.
+    </p>
+
+    <p>
+        The final policy represents the best learned behavior for maximizing rewards.
+    </p>
+
+    <hr>
+
+    <h2>Exploration vs Exploitation</h2>
+
+    <p>
+        One of the most important concepts in reinforcement learning is the balance between exploration and exploitation.
+    </p>
+
+    <h4>Exploration</h4>
+
+    <p>
+        Exploration occurs when the agent tries new actions in order to discover potentially better solutions.
+    </p>
+
+    <h4>Exploitation</h4>
+
+    <p>
+        Exploitation occurs when the agent uses previously learned knowledge to maximize rewards.
+    </p>
+
+    <p>
+        A successful reinforcement learning model must maintain a balance between both strategies.
+    </p>
+
+    <hr>
+
+    <h2>Learning Process</h2>
+
+    <p>
+        The reinforcement learning process is iterative and continuous. During each episode, the agent interacts with
+        the environment multiple times and updates its knowledge based on obtained rewards.
+    </p>
+
+    <h4>General Learning Steps</h4>
+
+    <ol>
+        <li>The agent observes the current state.</li>
+        <li>The agent selects an action.</li>
+        <li>The environment changes.</li>
+        <li>The agent receives a reward.</li>
+        <li>The agent updates its knowledge.</li>
+        <li>The process repeats until the goal is reached.</li>
+    </ol>
+
+    <hr>
+
+    <h2>Q-Learning Algorithm</h2>
+
+    <p>
+        Q-Learning is one of the most popular reinforcement learning algorithms. It uses a Q-table to store learned
+        values for each state-action combination.
+    </p>
+
+    <p>
+        The Q-value represents the expected future reward of performing a specific action in a specific state.
+    </p>
+
+    <p>
+        During training, the Q-values are continuously updated using the Bellman equation.
+    </p>
+
+    <hr>
+
+    <h2>Real-World Applications</h2>
+
+    <p>
+        Reinforcement Learning is currently used in multiple industries and advanced technological systems.
+    </p>
+
+    <ul>
+        <li>Autonomous driving systems</li>
+        <li>Financial market optimization</li>
+        <li>Industrial robotics</li>
+        <li>Smart healthcare systems</li>
+        <li>Energy optimization</li>
+        <li>Inventory management</li>
+        <li>Game artificial intelligence</li>
+        <li>Cybersecurity systems</li>
+    </ul>
+
+    <hr>
+
+    <h2>Advantages of Reinforcement Learning</h2>
+
+    <ul>
+        <li>Allows autonomous learning</li>
+        <li>Improves decision-making over time</li>
+        <li>Works in dynamic environments</li>
+        <li>Can optimize complex systems</li>
+        <li>Supports adaptive intelligent behavior</li>
+    </ul>
+
+    <hr>
+
+    <h2>Limitations of Reinforcement Learning</h2>
+
+    <ul>
+        <li>Training can require large computational resources</li>
+        <li>Learning may take a long time</li>
+        <li>Reward design can be difficult</li>
+        <li>Exploration may generate inefficient actions</li>
+        <li>Complex environments require advanced algorithms</li>
+    </ul>
+
+    <hr>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        Reinforcement Learning represents one of the most advanced areas of artificial intelligence. Through continuous
+        interaction with environments, intelligent agents can learn optimal strategies, improve performance, and solve
+        complex decision-making problems autonomously.
+    </p>
+
+    <p>
+        This project demonstrates the practical implementation of reinforcement learning concepts through a Flask-based
+        web application using the Q-Learning algorithm, graphical visualization, and intelligent agent simulation.
+    </p>
+
+</div>
+
+{% endblock %}

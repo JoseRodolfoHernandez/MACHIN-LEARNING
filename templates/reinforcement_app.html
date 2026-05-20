@@ -1,0 +1,58 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1>Intelligent Agent Application</h1>
+
+    <p>
+        This application demonstrates a Reinforcement Learning agent using Q-Learning.
+    </p>
+
+    <h3>Total Reward</h3>
+
+    <p>{{ total_reward }}</p>
+
+    <h3>Learned Policy</h3>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>State</th>
+            <th>Best Action</th>
+        </tr>
+
+        {% for i in range(policy|length) %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ policy[i] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <h3>Q-Table</h3>
+
+    <table class="table table-striped">
+
+        {% for row in qtable %}
+        <tr>
+
+            {% for value in row %}
+            <td>{{ value|round(2) }}</td>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <h3>Reward Progression Graph</h3>
+
+    <img src="{{ url_for('static', filename='rewards_graph.png') }}"
+         class="img-fluid">
+
+</div>
+
+{% endblock %}
