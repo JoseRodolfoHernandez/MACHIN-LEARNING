@@ -3,6 +3,7 @@ import linear_regression_sales
 from jobs import logistic_regression
 from jobs import classification_model
 from jobs import clustering
+from jobs import reinforcement_learning
 
 app = Flask(__name__)
 
@@ -123,6 +124,28 @@ def clustering_view():
     data, summary = clustering.apply_kmeans()
     return render_template("clustering.html", data=data, summary=summary)
 
+
+# =========================
+# REINFORCEMENT LEARNING
+# =========================
+
+@app.route("/reinforcement_theory")
+def reinforcement_theory():
+    return render_template("reinforcement_theory.html")
+
+
+@app.route("/reinforcement_app")
+def reinforcement_app():
+
+    results = reinforcement_learning.get_results()
+
+    return render_template(
+        "reinforcement_app.html",
+        qtable=results["qtable"],
+        policy=results["policy"],
+        rewards=results["rewards"],
+        total_reward=results["total_reward"]
+    )
 
 # =========================
 # MAIN
