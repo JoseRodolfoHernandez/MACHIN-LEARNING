@@ -1,0 +1,40 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="mt-4">Model Comparison</h1>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for r in results %}
+
+            <tr>
+                <td>{{ r.model }}</td>
+                <td>{{ r.accuracy }}%</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <img src="{{ url_for('static', filename='model_comparison.png') }}"
+         class="img-fluid mt-4">
+
+</div>
+
+{% endblock %}

@@ -4,6 +4,7 @@ from jobs import logistic_regression
 from jobs import classification_model
 from jobs import clustering
 from jobs import reinforcement_learning
+from jobs import model_engineering
 
 app = Flask(__name__)
 
@@ -145,6 +146,25 @@ def reinforcement_app():
         policy=results["policy"],
         rewards=results["rewards"],
         total_reward=results["total_reward"]
+    )
+
+# =========================
+# MODEL ENGINEERING
+# =========================
+
+@app.route("/model_theory")
+def model_theory():
+    return render_template("model_theory.html")
+
+
+@app.route("/model_engineering")
+def model_engineering_view():
+
+    results = model_engineering.train_models()
+
+    return render_template(
+        "model_engineering.html",
+        results=results
     )
 
 # =========================
