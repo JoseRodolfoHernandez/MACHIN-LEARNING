@@ -1,0 +1,104 @@
+{% extends "menu.html" %}
+
+{% block title %}
+Model Evaluation
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- TITLE -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Model Evaluation Dashboard</h1>
+        <p class="lead">Comparison and evaluation of Machine Learning models</p>
+    </div>
+
+    
+    <ul class="nav nav-tabs mb-4 justify-content-center" id="evaluationTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab">
+                 General Dashboard
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold" id="metrics-tab" data-bs-toggle="tab" data-bs-target="#metrics" type="button" role="tab">
+                 Detailed Metrics & Graphics
+            </button>
+        </li>
+    </ul>
+
+
+    <div class="tab-content" id="myTabContent">
+        
+    
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+            <!-- BEST MODEL -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-body">
+                    <h3 class="mb-3">Best Model Selected</h3>
+                    <p class="fs-5">The best performing model according to the evaluation metrics is:</p>
+                    <h2 class="text-primary">{{ best_model_name }}</h2>
+                </div>
+            </div>
+
+            <!-- ANALYSIS -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-body">
+                    <h3 class="mb-4">Performance Analysis</h3>
+                    <p>The evaluation process allows comparing the behavior of multiple Machine Learning models using classification metrics such as Accuracy, Precision, Recall, and F1 Score.</p>
+                    <p>Logistic Regression provides stable and interpretable results, Decision Tree offers easy visualization of decision paths, and Random Forest improves prediction robustness through ensemble learning.</p>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="tab-pane fade" id="metrics" role="tabpanel">
+            <!-- METRICS TABLE -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-body">
+                    <h3 class="mb-4">Metrics Comparison Table</h3>
+                    <table class="table table-bordered table-hover text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for model in results %}
+                            <tr>
+                                <td>{{ model["Model"] }}</td>
+                                <td>{{ model["Accuracy"] }}</td>
+                                <td>{{ model["Precision"] }}</td>
+                                <td>{{ model["Recall"] }}</td>
+                                <td>{{ model["F1 Score"] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- GRAPH -->
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-body text-center">
+                    <h3 class="mb-4">Accuracy Comparison Graph</h3>
+                    <img src="{{ url_for('static', filename='model_comparison.png') }}" class="img-fluid rounded shadow" alt="Model Comparison">
+                </div>
+            </div>
+            
+        
+            <div class="card shadow-lg border-0 mb-5">
+                <div class="card-body text-center">
+                    <h3 class="mb-4">Confusion Matrix (Best Model)</h3>
+                    <img src="{{ url_for('static', filename='confusion_matrix.png') }}" class="img-fluid rounded shadow" alt="Confusion Matrix">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

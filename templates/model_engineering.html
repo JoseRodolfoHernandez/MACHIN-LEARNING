@@ -1,40 +1,48 @@
 {% extends 'menu.html' %}
 
+{% block title %}
+Model Engineering
+{% endblock %}
+
 {% block content %}
 
-<div class="container">
+<h1 class="mb-4">Model Engineering</h1>
 
-    <h1 class="mt-4">Model Comparison</h1>
+<p>
+This section presents the training and comparison of three Machine Learning models.
+</p>
 
-    <table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped">
 
-        <thead class="table-dark">
+    <thead class="table-dark">
 
-            <tr>
-                <th>Model</th>
-                <th>Accuracy</th>
-            </tr>
+        <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+        </tr>
 
-        </thead>
+    </thead>
 
-        <tbody>
+    <tbody>
 
-            {% for r in results %}
+        {% for model in results %}
 
-            <tr>
-                <td>{{ r.model }}</td>
-                <td>{{ r.accuracy }}%</td>
-            </tr>
+        <tr>
+            <td>{{ model.name }}</td>
+            <td>{{ model.accuracy }}</td>
+        </tr>
 
-            {% endfor %}
+        {% endfor %}
 
-        </tbody>
+    </tbody>
 
-    </table>
+</table>
 
-    <img src="{{ url_for('static', filename='model_comparison.png') }}"
-         class="img-fluid mt-4">
+<h3 class="mt-5">Model Comparison Graph</h3>
 
-</div>
+<img
+    src="{{ url_for('static', filename='engineering_models.png') }}"
+    class="img-fluid rounded shadow"
+>
 
 {% endblock %}
