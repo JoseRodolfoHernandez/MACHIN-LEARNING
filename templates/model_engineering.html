@@ -1,0 +1,48 @@
+{% extends 'menu.html' %}
+
+{% block title %}
+Model Engineering
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">Model Engineering</h1>
+
+<p>
+This section presents the training and comparison of three Machine Learning models.
+</p>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for model in results %}
+
+        <tr>
+            <td>{{ model.name }}</td>
+            <td>{{ model.accuracy }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<h3 class="mt-5">Model Comparison Graph</h3>
+
+<img
+    src="{{ url_for('static', filename='engineering_models.png') }}"
+    class="img-fluid rounded shadow"
+>
+
+{% endblock %}

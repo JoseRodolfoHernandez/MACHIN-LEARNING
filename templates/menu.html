@@ -4,132 +4,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}Machine Learning App{% endblock %}</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .dropdown-menu {
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #0d6efd;
+            color: white;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- NAVBAR -->
-    <header>
-        <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">ML App</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand" href="/">ML App</a>
 
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
 
-                        <!-- HOME -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <!-- USE CASES -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                ML Use Cases
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/case_1_stock">Case 1</a></li>
-                                <li><a class="dropdown-item" href="/case2">Case 2</a></li>
-                                <li><a class="dropdown-item" href="/case3">Case 3</a></li>
-                                <li><a class="dropdown-item" href="/case4">Case 4</a></li>
-                            </ul>
-                        </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
 
-                        <!-- SUPERVISED -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/supervised">Supervised Learning</a>
-                        </li>
+                <ul class="navbar-nav me-auto">
 
-                        <!-- LINEAR -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                Linear Regression
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/linear_theory">Concepts</a></li>
-                                <li><a class="dropdown-item" href="/LinearRegression">Application</a></li>
-                            </ul>
-                        </li>
+                    <!-- HOME -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
 
-                        <!-- LOGISTIC -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                Logistic Regression
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/logistic_theory">Concepts</a></li>
-                                <li><a class="dropdown-item" href="/logistic">Application</a></li>
-                            </ul>
-                        </li>
+                    <!-- BUSINESS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
 
-                        <!-- CLASSIFICATION -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                Classification Model
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/classification_theory">Concepts</a></li>
-                                <li><a class="dropdown-item" href="/classification_app">Application</a></li>
-                            </ul>
-                        </li>
+                            Business Cases
+                        </a>
 
-                        <!-- UNSUPERVISED LEARNING -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                Unsupervised Learning
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/clustering_theory">Concepts</a></li>
-                                <li><a class="dropdown-item" href="/clustering">Application</a></li>
-                            </ul>
-                        </li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/case_1_stock">Stock Prediction</a></li>
+                            <li><a class="dropdown-item" href="/case2">Customer Analysis</a></li>
+                            <li><a class="dropdown-item" href="/case3">Sales Forecast</a></li>
+                            <li><a class="dropdown-item" href="/case4">Marketing Data</a></li>
+                        </ul>
+                    </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                Reinforcement Learning
-                            </a>
+                    <!-- SUPERVISED -->
+                    <li class="nav-item dropdown">
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="/reinforcement_theory">
-                                        Basic Concepts
-                                    </a>
-                                </li>
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
 
-                                <li>
-                                    <a class="dropdown-item" href="/reinforcement_app">
-                                        Intelligent Agent Application
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            Supervised Learning
+                        </a>
 
-                        <span class="navbar-text">
-                            Machine Learning Project
-                        </span>
-                </div>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/supervised">
+                                    Introduction
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" href="/linear_theory">
+                                    Linear Regression Concepts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/LinearRegression">
+                                    Linear Regression App
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/logistic_theory">
+                                    Logistic Regression Concepts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/logistic">
+                                    Logistic Regression App
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/classification_theory">
+                                    Classification Concepts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/classification_app">
+                                    Classification Application
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- UNSUPERVISED -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
+
+                            Unsupervised
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/clustering_theory">
+                                    Clustering Concepts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/clustering">
+                                    K-Means Application
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- REINFORCEMENT -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
+
+                            Reinforcement
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/reinforcement_theory">
+                                    Basic Concepts
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/reinforcement_app">
+                                    Intelligent Agent
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- MODEL ENGINEERING -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
+
+                            Model Engineering
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/model_theory">
+                                    Model Development
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/model_engineering">
+                                    Model Comparison
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- MODEL EVALUATION -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown">
+
+                            Model Evaluation
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="/model_evaluation">
+                                    Evaluation Dashboard
+                                </a>
+                            </li>
+
+                        </ul>
+
+                <!-- RIGHT TEXT -->
+                <span class="navbar-text text-white fw-bold">
+                    Machine Learning Project
+                </span>
+
             </div>
-        </nav>
-    </header>
-
+        </div>
+    </nav>
 
     <!-- CONTENT -->
-    <div class="container mt-4">
+    <div class="container">
+
         {% block content %}
         {% endblock %}
+
     </div>
 
     <!-- FOOTER -->
-    <footer class="mt-5">
-        <p class="text-center">© 2026 Machine Learning App - José Hernández</p>
+    <footer class="text-center">
+        © 2026 Machine Learning App - José Hernández
     </footer>
 
 </body>
